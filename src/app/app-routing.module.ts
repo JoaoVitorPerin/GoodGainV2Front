@@ -5,10 +5,13 @@ import { AutenticacaoComponent } from './core/autenticacao/autenticacao.componen
 import { AutenticacaoGuard } from './core/guards/autenticacao.guard';
 import { Page404Component } from './core/page-404/page-404.component';
 import { RedefinirSenhaComponent } from './core/redefinir-senha/redefinir-senha.component';
-import { MovimentacaoEstoqueComponent } from './modules/movimentacao-estoque/movimentacao-estoque.component';
-import { SepararPedidoComponent } from './modules/separar-pedido/separar-pedido.component';
+import { HomeComponent } from './core/home/home.component';
 
 const APP_ROUTES: Routes = [
+    {
+        path: 'home',
+        component: HomeComponent
+    },
     {
         path: 'login',
         component: AutenticacaoComponent
@@ -23,84 +26,11 @@ const APP_ROUTES: Routes = [
         data: { animationState: 'AppLayoutComponent' },
         canActivate: [AutenticacaoGuard],
         canActivateChild: [AutenticacaoGuard],
-        children: [
-            {
-                path: 'user',
-                loadChildren: () =>
-                  import(
-                    './modules/user/user.module'
-                  ).then(m => m.UserModule)
-            },
-            {
-                path: 'produto',
-                loadChildren: () =>
-                  import(
-                    './modules/produto/produto.module'
-                  ).then(m => m.ProdutoModule)
-            },
-            {
-                path: 'pedido',
-                loadChildren: () =>
-                  import(
-                    './modules/pedido/pedido.module'
-                  ).then(m => m.PedidoModule)
-            },
-            {
-              path: 'marca',
-              loadChildren: () =>
-                import(
-                  './modules/marca/marca.module'
-                ).then(m => m.MarcaModule)
-            },
-            {
-              path: 'categoria',
-              loadChildren: () =>
-                import(
-                  './modules/categoria/categoria.module'
-                ).then(m => m.CategoriaModule)
-            },
-            {
-                path: 'cliente',
-                loadChildren: () =>
-                  import(
-                    './modules/cliente/cliente.module'
-                  ).then(m => m.ClienteModule)
-            },
-            {
-              path: 'dashboard',
-              loadChildren: () =>
-                import(
-                  './modules/dashboard/dashboard.module'
-                ).then(m => m.DashboardModule)
-            },
-            {
-              path: 'custo-mensal',
-              loadChildren: () =>
-                import(
-                  './modules/custo-mensal/custo-mensal.module'
-                ).then(m => m.CustoMensalModule)
-            },
-            {
-              path: 'separar-pedido',
-              component: SepararPedidoComponent
-            },
-            {
-                path: 'movimentacao-estoque',
-                component: MovimentacaoEstoqueComponent
-            },
-            {
-                path: '404',
-                component: Page404Component
-            },
-            {
-                path: '**',
-                redirectTo: '404'
-            },
-        ]
+        children: []
     },
     {
         path: '**',
-        redirectTo: 'login',
+        redirectTo: 'home',
         data: { animationState: 'FullPath' },
     },
 ];

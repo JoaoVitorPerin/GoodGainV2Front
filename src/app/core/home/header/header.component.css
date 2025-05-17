@@ -1,0 +1,36 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2.5rem 2.5rem;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+.logo{
+    width: 3rem;
+    height: 3rem;
+}
+
+.menu{
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    margin: 0 0 0 2rem;
+    border: 1px solid rgba(211, 211, 211, .03);
+    background: linear-gradient(180deg, #def4ff0a, #abbcc50d, #5d676d1a);
+}
+
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.itemMenu.notSelected:hover {
+    color: var(--primary-color);
+    transition: all 0.2s ease-in-out;
+}

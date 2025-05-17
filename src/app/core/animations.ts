@@ -73,7 +73,7 @@ export const inOutAnimation = trigger(
       ':enter',
       [
         style({ opacity: 0 }),
-        animate('1s ease-out',
+        animate('2s ease-out',
           style({ opacity: 1 }))
       ]
     ),

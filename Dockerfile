@@ -21,7 +21,7 @@ RUN ng build --configuration=production
 FROM nginx:stable
 
 # Copiar o build final do Angular para o NGINX
-COPY --from=build /usr/src/app/dist/stock-flow-angular /usr/share/nginx/html
+COPY --from=build /usr/src/app/dist/good-gain-angular /usr/share/nginx/html
 
 # Configurações do NGINX
 COPY nginx.conf /etc/nginx/

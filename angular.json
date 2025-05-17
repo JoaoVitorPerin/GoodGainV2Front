@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "stock-flow-angular": {
+        "good-gain-angular": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/stock-flow-angular",
+                        "outputPath": "dist/good-gain-angular",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": [
@@ -100,13 +100,13 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "buildTarget": "stock-flow-angular:build:production"
+                            "buildTarget": "good-gain-angular:build:production"
                         },
                         "development": {
-                            "buildTarget": "stock-flow-angular:build:development"
+                            "buildTarget": "good-gain-angular:build:development"
                         },
                         "local": {
-                            "buildTarget": "stock-flow-angular:build:local"
+                            "buildTarget": "good-gain-angular:build:local"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -114,7 +114,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "buildTarget": "stock-flow-angular:build"
+                        "buildTarget": "good-gain-angular:build"
                     }
                 },
                 "test": {

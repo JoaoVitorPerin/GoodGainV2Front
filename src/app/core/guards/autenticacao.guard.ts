@@ -46,7 +46,7 @@ export class AutenticacaoGuard  {
   }
 
   redirectParaLogin(): void {
-    this.router.navigate(['/login'])
+    this.router.navigate(['/home'])
   }
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean{
