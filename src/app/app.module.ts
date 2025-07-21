@@ -14,10 +14,10 @@ import { TratamentoErrosService } from './core/interceptors/tratamento-erros/tra
 import { ModalConfirmacaoModule } from './shared/components/modal-confirmacao/modal-confirmacao.module';
 
 @NgModule({
-    declarations: [
+    declarations: [	
         AppComponent,
-        LoaderGeralComponent
-    ],
+        LoaderGeralComponent,
+   ],
     imports: [
         BrowserModule,
         AppRoutingModule, 

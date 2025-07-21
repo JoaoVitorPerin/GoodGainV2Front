@@ -18,7 +18,7 @@
     padding: 0.5rem 1rem;
     margin: 0 0 0 2rem;
     border: 1px solid rgba(211, 211, 211, .03);
-    background: linear-gradient(180deg, #def4ff0a, #abbcc50d, #5d676d1a);
+    background-color: var(--surface-a);
 }
 
 .dot {

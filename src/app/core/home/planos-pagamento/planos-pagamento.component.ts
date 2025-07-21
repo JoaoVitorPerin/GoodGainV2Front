@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { TagModule } from 'primeng/tag';
 
 @Component({
   selector: 'app-planos-pagamento',
@@ -10,7 +11,8 @@ import { ButtonModule } from 'primeng/button';
   standalone: true,
   imports: [
     CommonModule,
-    ButtonModule
+    ButtonModule,
+    TagModule
   ]
 })
 export class PlanosPagamentoComponent{
