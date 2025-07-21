@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
+import { PlanosPagamentoComponent } from './planos-pagamento/planos-pagamento.component';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,8 @@ import { HeaderComponent } from './header/header.component';
   styleUrls: ['./home.component.css'],
   standalone: true,
   imports: [
-    HeaderComponent
+    HeaderComponent,
+    PlanosPagamentoComponent
   ]
 })
 export class HomeComponent implements OnInit {

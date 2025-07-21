@@ -7,7 +7,7 @@
           @if(item.is_ativo){
             <span class="dot" @inOutAnimation></span>
           }
-          <p class="m-0 text-base">{{item.title}}</p>
+          <p class="m-0 text-base" [ngClass]="{ativo: item.is_ativo}">{{item.title}}</p>
         </div>
       }
     </div>
