@@ -27,4 +27,36 @@ import { ChamadaUsuarioComponent } from './chamada-usuario/chamada-usuario.compo
 export class HomeComponent implements OnInit {
   ngOnInit() {
   }
+
+  menuItems = [
+    {
+      id: 'inicio',
+      title: 'Início',
+      is_ativo: true,
+    },
+    {
+      id: 'precos',
+      title: 'Preços',
+      is_ativo: false,
+    },
+    {
+      id: 'recursos',
+      title: 'Recursos',
+      is_ativo: false,
+    }
+  ]
+
+  scrollToItem(event: string) {
+    const element = document.getElementById(event);
+
+    if (element) {
+      const elementPosition = element.offsetTop;
+      const offsetPosition = elementPosition - 130;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+}
 }

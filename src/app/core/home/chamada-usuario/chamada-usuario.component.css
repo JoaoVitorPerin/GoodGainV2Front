@@ -1,3 +1,9 @@
 .espacamento-header{
     margin-top: 10rem;
 }
+
+@media (max-width: 768px) {
+    .espacamento-header{
+        margin-top: 5rem;
+    }
+}

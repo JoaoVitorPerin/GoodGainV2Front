@@ -1,19 +1,29 @@
-<section class="header flex align-items-center justify-items-center">
-  <img src="../../../../assets/img/icons/GoodGain.svg" alt="Good Gain Logo" class="logo">
-  <div class="w-full menu flex align-items-center justify-content-between">
+@if(this.isMobile){
+  <section class="flex align-items-center justify-content-between p-5">
+    <img src="../../../../assets/img/icons/GoodGainCompleto.svg" alt="Good Gain Logo" class="logoMobile">
     <div class="flex align-items-center justify-content-center gap-5">
-      @for(item of menuItem; track $index){
-        <div class="flex align-items-center justify-content-center gap-2 itemMenu" [class.notSelected]="!item.is_ativo" [class.cursor-pointer]="!item.is_ativo" (click)="alterarMenu($index)">
-          @if(item.is_ativo){
-            <span class="dot" @inOutAnimation></span>
-          }
-          <p class="m-0 text-base" [ngClass]="{ativo: item.is_ativo}">{{item.title}}</p>
-        </div>
-      }
-    </div>
-    <div class="flex align-items-center justify-content-center gap-5">
-      <p-button label="Login" [link]="true" (click)="alterarRota('/login')"  />
+      <p-button label="Login" [link]="true" (click)="alterarRota('/login')"/>
       <p-button label="Cadastre-se" />
     </div>
-  </div>
-</section>
+  </section>
+}@else{
+  <section class="header flex align-items-center justify-content-center">
+    <img src="../../../../assets/img/icons/GoodGain.svg" alt="Good Gain Logo" class="logo">
+    <div class="w-full menu flex align-items-center justify-content-between">
+      <div class="flex align-items-center justify-content-center gap-5">
+        @for(item of menuItem; track $index){
+          <div class="flex align-items-center justify-content-center gap-2 itemMenu" [class.notSelected]="!item.is_ativo" [class.cursor-pointer]="!item.is_ativo" (click)="alterarMenu(item.id)">
+            @if(item.is_ativo){
+              <span class="dot" @inOutAnimation></span>
+            }
+            <p class="m-0 text-base" [ngClass]="{ativo: item.is_ativo}">{{item.title}}</p>
+          </div>
+        }
+      </div>
+      <div class="flex align-items-center justify-content-center gap-5">
+        <p-button label="Login" [link]="true" (click)="alterarRota('/login')"  />
+        <p-button label="Cadastre-se" />
+      </div>
+    </div>
+  </section>
+}

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
@@ -11,4 +12,9 @@ import { ButtonModule } from 'primeng/button';
   ]
 })
 export class PerguntaDecisivaComponent {
+  private readonly router = inject(Router);
+  
+  navigateCadastro() {
+    this.router.navigate(['/cadastro']);
+  }
 }

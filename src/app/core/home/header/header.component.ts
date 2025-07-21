@@ -1,8 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit, Output } from '@angular/core';
 import { inOutAnimation } from '../../animations';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -17,29 +18,23 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent{
   private readonly router = inject(Router);
-  menuItem = [
-    {
-      title: 'Home',
-      is_ativo: true,
-    },
-    {
-      title: 'Sobre nós',
-      is_ativo: false,
-    },
-    {
-      title: 'Planos',
-      is_ativo: false,
-    },
-    {
-      title: 'Contato',
-      is_ativo: false,
-    }
-  ]
 
-  alterarMenu(index: number) {
-    this.menuItem.forEach((item, i) => {
-      item.is_ativo = i === index;
+  @Input() menuItem: { id: string, title: string, is_ativo: boolean }[] = [];
+  @Output() onSelectMenu = new EventEmitter();
+
+  isMobile = window.innerWidth <= 768;
+
+  constructor() {
+    window.addEventListener('resize', () => {
+      this.isMobile = window.innerWidth <= 768;
     });
+  }
+
+  alterarMenu(id: string) {
+    this.menuItem.forEach(item => {
+      item.is_ativo = item.id === id;
+    });
+    this.onSelectMenu.emit(id);
   }
 
   alterarRota(url: string){

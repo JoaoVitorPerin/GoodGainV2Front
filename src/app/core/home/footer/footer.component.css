@@ -2,3 +2,7 @@
     background-color: var(--surface-a);
 }
 
+.itemFooter:hover {
+    color: var(--primary-color);
+    cursor: pointer;
+}

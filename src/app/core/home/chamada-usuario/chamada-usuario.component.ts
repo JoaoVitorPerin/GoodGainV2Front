@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 
@@ -13,4 +14,9 @@ import { TagModule } from 'primeng/tag';
   ]
 })
 export class ChamadaUsuarioComponent{
+  private readonly router = inject(Router);
+
+  navigateCadastro() {
+    this.router.navigate(['/cadastro']);
+  }
 }
