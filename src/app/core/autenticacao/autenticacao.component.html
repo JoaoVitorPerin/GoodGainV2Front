@@ -1,15 +1,16 @@
 <section class="flex flex-column align-items-center justify-content-center">
-    <img src="../../../assets/img/icons/Logo.png" alt="Logo" class="logo mb-5">
+    <img src="../../../../assets/img/icons/GoodGainCompleto.svg" alt="Logo" class="logo mb-5">
     <form [formGroup]="formLogin">
         <div class="grid flex justify-content-center">
             <div class="col-12">
-                <app-form type="text" [readonly]="loadingRequest()" id="username" formControlName="username" erro="Obrigatório informar um usuário!" label="Usuário" placeholder="Digite seu usuário" ngDefaultControl/>
+                <app-form type="text" [exibirLabelObrigatoriedade]="true" [readonly]="loadingRequest()" id="username" formControlName="username" erro="Informe o seu usuário!" label="Usuário" placeholder="Digite seu usuário" ngDefaultControl/>
             </div>
             <div class="col-12">
-                <app-form type="password" [readonly]="loadingRequest()" id="password" formControlName="password" placeholder="Digite a sua senha" erro="Obrigatório informar uma senha!" label="Senha" ngDefaultControl/>
+                <app-form type="password" [exibirLabelObrigatoriedade]="true" [readonly]="loadingRequest()" id="password" formControlName="password" placeholder="Digite a sua senha" erro="Informe a sua senha!" label="Senha" ngDefaultControl/>
             </div>
         </div>
         <p-button label="Entrar" [disabled]="loadingRequest()" [loading]="loadingRequest()" (click)="login()" styleClass="w-full"/>
-        <p class="text-sm text-primary mt-3 text-center cursor-pointer redefinir" (click)="redirectRedefinirSenha()">Redefinir a senha?</p>
+        <p class="text-sm text-primary mt-3 text-center cursor-pointer redefinir" (click)="redirectRedefinirSenha()">Redefinir a senha?</p> 
+        <p class="text-sm mt-3 text-center">Não possui uma conta? <span class="text-primary redefinir cursor-pointer" (click)="redirectCadastro()">Cadastre-se!</span></p>
     </form>
 </section>

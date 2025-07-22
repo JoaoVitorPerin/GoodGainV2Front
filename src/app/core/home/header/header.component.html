@@ -3,7 +3,7 @@
     <img src="../../../../assets/img/icons/GoodGainCompleto.svg" alt="Good Gain Logo" class="logoMobile">
     <div class="flex align-items-center justify-content-center gap-5">
       <p-button label="Login" [link]="true" (click)="alterarRota('/login')"/>
-      <p-button label="Cadastre-se" />
+      <p-button label="Cadastre-se" (click)="alterarRota('/cadastro')"/>
     </div>
   </section>
 }@else{
@@ -22,7 +22,7 @@
       </div>
       <div class="flex align-items-center justify-content-center gap-5">
         <p-button label="Login" [link]="true" (click)="alterarRota('/login')"  />
-        <p-button label="Cadastre-se" />
+        <p-button label="Cadastre-se" (click)="alterarRota('/cadastro')"/>
       </div>
     </div>
   </section>

@@ -79,6 +79,10 @@ export class AutenticacaoComponent implements OnInit {
     this.router.navigate(['redefinir-senha'])
   }
 
+  redirectCadastro(): void {
+    this.router.navigate(['cadastro'])
+  }
+
   ngOnDestroy(): void {
     this.subs.forEach(sub => sub.unsubscribe())
   }
