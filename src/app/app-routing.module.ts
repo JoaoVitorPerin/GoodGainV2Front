@@ -27,11 +27,21 @@ const APP_ROUTES: Routes = [
     },
     {
         path: '',
+        redirectTo: '/home',
+        pathMatch: 'full'
+    },
+    {
+        path: '',
         component: AppLayoutComponent,
         data: { animationState: 'AppLayoutComponent' },
         canActivate: [AutenticacaoGuard],
         canActivateChild: [AutenticacaoGuard],
-        children: []
+        children: [
+            {
+                path: '404',
+                component: Page404Component
+            }
+        ]
     },
     {
         path: '**',

@@ -25,6 +25,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { ChipsModule } from 'primeng/chips';
+import { FloatLabelModule } from 'primeng/floatlabel';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ChipsModule } from 'primeng/chips';
     OverlayPanelModule,
     OverlayPanelModule,
     PickListModule,
+    FloatLabelModule,
     InputGroupModule,
     InputGroupAddonModule,
     SkeletonModule,
