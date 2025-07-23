@@ -1,0 +1,22 @@
+section{
+    height: 100vh;
+}
+
+.logo{
+    width: 20rem;
+}
+
+@media (min-width: 768px) {
+    form{
+        width: 600px;
+    }  
+}
+
+button{
+    width: 50% !important;
+    margin-top: 1rem;
+}
+
+.redefinir:hover{
+    color: var(--secondary-color)!important;
+}

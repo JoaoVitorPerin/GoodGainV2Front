@@ -1,0 +1,7 @@
+<div class="mt-1">
+    <p class="text-xs p-0 m-0" [ngClass]="{'text-green-500': possuiMinimoOitoCaracteres(), 'invalid': !possuiMinimoOitoCaracteres()}">Pelo menos 8 caracteres</p>
+    <p class="text-xs p-0 m-0" [ngClass]="{'text-green-500': possuiLetraMaiuscula(), 'invalid': !possuiLetraMaiuscula()}">Pelo menos 1 caractere maiúsculo</p>
+    <p class="text-xs p-0 m-0" [ngClass]="{'text-green-500': possuiMinuscula(), 'invalid': !possuiMinuscula()}">Pelo menos 1 caractere minúsculo</p>
+    <p class="text-xs p-0 m-0" [ngClass]="{'text-green-500': possuiNumero(), 'invalid': !possuiNumero()}">Pelo menos 1 número</p>
+    <p class="text-xs p-0 m-0" [ngClass]="{'text-green-500': possuiCaracterEspecial(), 'invalid': !possuiCaracterEspecial()}">Pelo menos 1 caractere especial (Ex: $*&!#)</p>
+</div>

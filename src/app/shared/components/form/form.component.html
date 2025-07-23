@@ -548,7 +548,7 @@
 
   <div *ngIf="type === 'date-manual'">
     <p-floatLabel>
-      <p-inputMask [formControlName]="formControlName"
+      <p-inputMask [formControlName]="formControlName" (onBlur)="onBlurHandler($event)"
         mask="99/99/9999" [autoClear]="autoClear ?? true" [readonly]="readonly ?? false"
         [id]="formControlName + '_datemanual'"
         [ngClass]="{'ng-invalid ng-dirty': !formGroup?.get(formControlName)?.valid && formGroup?.get(formControlName)?.touched }"></p-inputMask>

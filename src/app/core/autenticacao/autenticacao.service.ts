@@ -30,4 +30,15 @@ export class AutenticacaoService {
       context: new HttpContext().set(SKIP_LOADER, true),
     });
   }
+
+  cadastroUsuario(dados): Observable<any> {
+    this.data = {
+      ...dados,
+    };
+
+    return this.http.post<any>(`${this.API_BACK}user/cadastro`, this.data, {
+      headers: this.headerService.getHeader(),
+      context: new HttpContext().set(SKIP_LOADER, true),
+    });
+  }
 }
