@@ -1,12 +1,11 @@
 .layout-sidebar {
     position: fixed;
-    width: 300px;
-    height: 93vh;
+    width: 350px;
+    height: 100vh;
     z-index: 999;
     padding: 0rem 1.5rem;
     overflow-y: auto;
     user-select: none;
-    top: 5rem;
     transition: transform $transitionDuration, left $transitionDuration;
     background-color: var(--surface-overlay);
 }

@@ -1,6 +1,10 @@
-<ul class="layout-menu">
-    <ng-container *ngFor="let item of model; let i = index;">
-        <li app-menuitem *ngIf="!item.separator" [item]="item" [index]="i" [root]="true"></li>
-        <li *ngIf="item.separator" class="menu-separator"></li>
-    </ng-container>
+<ul class="layout-menu flex flex-column gap-1">
+    @for(item of model; track item){
+        <li class="cursor-pointer menu-item py-2">
+            <div class="flex align-items-center p-1">
+                <i class="{{item.icon}}" class="text-2xl"></i>
+                <span class="ml-2 text-xl mt-1">{{item.label}}</span>
+            </div>
+        </li>
+    }
 </ul>
