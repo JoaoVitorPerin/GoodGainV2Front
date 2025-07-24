@@ -1,0 +1,106 @@
+<div class="flex flex-column align-items-center">
+    <div class="w-full">
+        <p-card>
+            <div class="grid">
+                <div class="col-6 md:col-2 flex align-items-center justify-content-center">
+                    <i class="pi pi-user text-primary" style="font-size: 5.5rem"></i>
+                </div>
+                <div class="col-6 md:col-4 flex flex-column align-items-start justify-content-center">
+                    <p class="text-primary text-2xl">{{username() ?? '--'}}</p>
+                    <p>CPF: {{cpfUser() ?? '--'}}</p>
+                </div>
+            </div>
+        </p-card>
+    </div>
+
+    <div class="surface-section mt-5" style="width: 75%;">
+        <p class="font-medium text-xl text-900 mb-3">Minhas preferências:</p>
+        <form [formGroup]="formPreferencias" class="">
+            <div class="grid">
+                <div class="col-12 md:col-4 mb-2">
+                    <app-form type="select-multiplo" id="esporte" label="Esportes" formControlName="esporte" [items]="itemsEsporte" placeholder="Selecione um esporte" ngDefaultControl/>
+                </div>
+                <div class="col-12 md:col-4 mb-2">
+                    <app-form type="select-multiplo" [items]="itemsCampeonatos" id="opcoes_campeonatos" label="Campeonatos" formControlName="opcoes_campeonatos" placeholder="Selecione um campeonato" ngDefaultControl/>
+                </div>
+                <div class="col-12 md:col-4 mb-2">
+                    <app-form type="select-multiplo" [items]="itemsTipoAposta" id="opcoes_apostas" label="Tipo de aposta" formControlName="opcoes_apostas" placeholder="Selecione um tipo de aposta" ngDefaultControl/>
+                </div>
+                <div class="col-12 md:col-3 mb-2">
+                    <button pButton pRipple label="Salvar preferências" icon="pi pi-check" (click)="onSubmitPreferencias()" class="w-full"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="surface-section mt-7" style="width: 75%;">
+        <div class="flex align-items-center justify-content-between grid">
+            <p class="font-medium text-xl text-900 mb-3 col-12 md:col-6">Minhas informações:</p>
+            <div class="flex justify-content-end gap-3 col-12 md:col-6">
+                <button pButton pRipple label="Redefinir Senha" icon="pi pi-pencil" style="width: 250px!important;" (click)="abrirModalRedefinirSenha()"></button>
+                <button pButton pRipple label="Editar" icon="pi pi-pencil" style="width: 150px!important;" (click)="toggleCamposDisable()"></button>
+            </div>
+        </div>
+
+        <ul class="list-none p-0 m-0">
+            <form [formGroup]="formPerfil">
+                <li class="flex align-items-center py-3 px-2 flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">Nome completo:</div>
+                    <div class="text-900 w-full md:w-10 md:flex-order-0 flex-order-1">
+                        <app-form type="text" id="nomeCompleto" formControlName="nomeCompleto" erro="Informe o seu nome completo" [ngClass]="{'isDisabled': disableCampos()}" placeholder="Digite seu usuário" ngDefaultControl/>
+                    </div>
+                </li>
+                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">E-mail:</div>
+                    <div class="text-900 w-full md:w-10 md:flex-order-0 flex-order-1">
+                        <app-form type="text" id="email" formControlName="email" placeholder="Digite seu email" ngDefaultControl [required]="true" [ngClass]="{'isDisabled': disableCampos()}" erro="Informe um email válido!"/>
+                    </div>
+                </li>
+                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">Data de nascimento:</div>
+                    <div class="text-900 w-full md:w-10 md:flex-order-0 flex-order-1">
+                        <app-form type="date-manual" id="dataNascimento" formControlName="dataNascimento" placeholder="Selecione" ngDefaultControl [required]="true" erro="Informe sua data de nascimento!" [ngClass]="{'isDisabled': disableCampos()}" (blur)="validarDataValida('dataNascimento', formPerfil)"/>
+                    </div>
+                </li>
+                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">Genêro:</div>
+                    <div class="text-900 w-full md:w-10 md:flex-order-0 flex-order-1">
+                        <app-form type="select" [items]="opcoesGenero" id="genero" formControlName="genero" [ngClass]="{'isDisabled': disableCampos()}" placeholder="Selecione o seu gênero" erro="Informe seu gênero!" ngDefaultControl/>
+                    </div>
+                </li>
+            </form>
+        </ul>
+        <div class="my-2 flex align-items-center justify-content-end gap-2">
+            <p-button label="Excluir conta" icon="pi pi-times" severity="danger" (click)="excluirConta()"></p-button>
+            @if(buttonSalvar()){
+                <p-button label="Salvar informações" icon="pi pi-check" severity="primary" (click)="onSubmit()"></p-button>
+            }
+        </div>
+    </div>
+</div>
+
+<ng-template #modalRedefinirSenha>
+    <div class="modal-body">
+        <form [formGroup]="formNovaSenha">
+            <div class="row mt-3">
+                <div class="col-12">
+                    <app-form type="password" id="oldPassword" label="Digite sua senha" formControlName="oldPassword" ngDefaultControl [required]="true" erro="Informe uma senha válida!"/>
+                </div>
+                <div class="col-12">
+                    <app-form type="password" id="password" label="Digite a nova senha" formControlName="password" placeholder="Digite sua senha" ngDefaultControl [required]="true" erro="Informe uma senha válida!"/>
+                    @if(formNovaSenha.get('password').touched){
+                        <app-validador-senha-forte [senha]="formNovaSenha.get('password').value"></app-validador-senha-forte>  
+                    }
+                </div>
+                <div class="col-12">
+                    <app-form type="password" id="confirmPassword" label="Confirmar a nova senha" formControlName="confirmPassword" placeholder="Confirme sua senha" ngDefaultControl [required]="true" erro="As senhas não coincidem!"/>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="flex justify-content-end">
+            <button pButton pRipple label="Salvar" icon="pi pi-check" style="width: 150px!important;" (click)="onSubmitNovaSenha()" class="mt-2"></button>
+        </div>
+    </div>
+</ng-template>

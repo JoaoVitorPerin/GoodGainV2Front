@@ -11,7 +11,7 @@ import { ButtonModule } from 'primeng/button';
 import { items } from 'src/app/shared/models/items.model';
 import { confirmPasswordValidator, validatorSenhaForte } from 'src/app/shared/validator/validatorForm';
 import { ValidadorSenhaForteComponent } from 'src/app/shared/components/validador-senha-forte/validador-senha-forte.component';
-import { isValidCPF } from 'src/app/shared/ts/util';
+import { isValidCPF, validarDataValida } from 'src/app/shared/ts/util';
 
 @Component({
   selector: 'app-cadastro',
@@ -32,11 +32,19 @@ export class CadastroComponent implements OnInit {
   private readonly tokenService = inject(TokenService);
   private readonly router = inject(Router);
   private readonly autenticacaoService = inject(AutenticacaoService);
-  private readonly cdr = inject(ChangeDetectorRef);
 
   formCadastro: FormGroup;
   loadingRequest = signal(false);
   erroCPF = signal<string>(null);
+
+  validarDataValida = validarDataValida;
+
+  opcoesGenero: items[] = [
+    { value: 'masculino', label: 'Masculino' },
+    { value: 'feminino', label: 'Feminino' },
+    { value: 'outro', label: 'Outro' },
+    { value: 'nao_informado', label: 'Não especificado' }
+  ]
 
   opcoesOndeConheceu: items[] = [
     { value: 'google', label: 'Google' },
@@ -59,6 +67,8 @@ export class CadastroComponent implements OnInit {
       cpf: [null, Validators.required],
       username: [null, Validators.required],
       dataNascimento: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      genero: [null, Validators.required],
       password: [null, [Validators.required, validatorSenhaForte()]],
       confirmPassword: [null, Validators.required],
       ondeConheceu: [null, Validators.required]
@@ -122,87 +132,6 @@ export class CadastroComponent implements OnInit {
 
     this.erroCPF.set('Informe o seu CPF!');
     return
-  }
-
-  validarDataValida(){
-    const dataNascimento = this.formCadastro.get('dataNascimento').value;
-        
-    if(!dataNascimento || dataNascimento === ''){
-      this.formCadastro.get('dataNascimento').setErrors({required: true});
-      this.formCadastro.get('dataNascimento').markAsTouched();
-      this.cdr.detectChanges();
-      return;
-    }
-
-    // Verificar formato da data (DD/MM/YYYY)
-    const regexData = /^(\d{2})\/(\d{2})\/(\d{4})$/;
-    const match = dataNascimento.match(regexData);
-    
-    if(!match){
-      this.formCadastro.get('dataNascimento').setErrors({formatoInvalido: true});
-      this.formCadastro.get('dataNascimento').markAsTouched();
-      this.cdr.detectChanges();
-      this.formCadastro.get('dataNascimento').setValue(null);
-      return;
-    }
-
-    const dia = parseInt(match[1], 10);
-    const mes = parseInt(match[2], 10);
-    const ano = parseInt(match[3], 10);
-    const anoAtual = new Date().getFullYear();
-
-    // Validar limites básicos
-    if(dia < 1 || dia > 31){
-      this.formCadastro.get('dataNascimento').setErrors({diaInvalido: true});
-      this.formCadastro.get('dataNascimento').markAsTouched();
-      this.cdr.detectChanges();
-      this.formCadastro.get('dataNascimento').setValue(null);
-      return;
-    }
-
-    if(mes < 1 || mes > 12){
-      this.formCadastro.get('dataNascimento').setErrors({mesInvalido: true});
-      this.formCadastro.get('dataNascimento').markAsTouched();
-      this.cdr.detectChanges();
-      this.formCadastro.get('dataNascimento').setValue(null);
-      return;
-    }
-
-    if(ano > anoAtual){
-      this.formCadastro.get('dataNascimento').setErrors({anoFuturo: true});
-      this.formCadastro.get('dataNascimento').markAsTouched();
-      this.cdr.detectChanges();
-      this.formCadastro.get('dataNascimento').setValue(null);
-      return;
-    }
-
-    // Criar objeto Date para validar se a data realmente existe
-    const dataObj = new Date(ano, mes - 1, dia);
-    
-    if(dataObj.getFullYear() !== ano || 
-       dataObj.getMonth() !== (mes - 1) || 
-       dataObj.getDate() !== dia){
-      this.formCadastro.get('dataNascimento').setErrors({dataInexistente: true});
-      this.formCadastro.get('dataNascimento').markAsTouched();
-      this.cdr.detectChanges();
-      this.formCadastro.get('dataNascimento').setValue(null);
-      return;
-    }
-
-    // Verificar se não é uma data futura
-    const hoje = new Date();
-    hoje.setHours(0, 0, 0, 0);
-    
-    if(dataObj > hoje){
-      this.formCadastro.get('dataNascimento').setErrors({dataFutura: true});
-      this.formCadastro.get('dataNascimento').markAsTouched();
-      this.cdr.detectChanges();
-      this.formCadastro.get('dataNascimento').setValue(null);
-      return;
-    }
-
-    this.formCadastro.get('dataNascimento').setErrors(null);
-    this.cdr.detectChanges();
   }
   
   @HostListener('document:keydown.enter', ['$event'])

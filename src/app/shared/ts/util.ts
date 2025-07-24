@@ -1595,3 +1595,77 @@ export const converterStatusPedido = (status: string): string =>{
       return 'Desconhecido';
   }
 }
+
+export const validarDataValida = (controlName, formulario): void => {
+  const dataNascimento = formulario.get(controlName).value;
+
+  if(!dataNascimento || dataNascimento === ''){
+    formulario.get(controlName).setErrors({required: true});
+    formulario.get(controlName).markAsTouched();
+
+    return;
+  }
+
+  const regexData = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+  const match = dataNascimento.match(regexData);
+  
+  if(!match){
+    formulario.get(controlName).setErrors({formatoInvalido: true});
+    formulario.get(controlName).markAsTouched();
+
+    formulario.get(controlName).setValue(null);
+    return;
+  }
+
+  const dia = parseInt(match[1], 10);
+  const mes = parseInt(match[2], 10);
+  const ano = parseInt(match[3], 10);
+  const anoAtual = new Date().getFullYear();
+
+  // Validar limites básicos
+  if(dia < 1 || dia > 31){
+    formulario.get(controlName).setErrors({diaInvalido: true});
+    formulario.get(controlName).markAsTouched();
+    formulario.get(controlName).setValue(null);
+    return;
+  }
+
+  if(mes < 1 || mes > 12){
+    formulario.get(controlName).setErrors({mesInvalido: true});
+    formulario.get(controlName).markAsTouched();
+    formulario.get(controlName).setValue(null);
+    return;
+  }
+
+  if(ano > anoAtual){
+    formulario.get(controlName).setErrors({anoFuturo: true});
+    formulario.get(controlName).markAsTouched();
+    formulario.get(controlName).setValue(null);
+    return;
+  }
+
+  // Criar objeto Date para validar se a data realmente existe
+  const dataObj = new Date(ano, mes - 1, dia);
+  
+  if(dataObj.getFullYear() !== ano || 
+      dataObj.getMonth() !== (mes - 1) || 
+      dataObj.getDate() !== dia){
+    formulario.get(controlName).setErrors({dataInexistente: true});
+    formulario.get(controlName).markAsTouched();
+    formulario.get(controlName).setValue(null);
+    return;
+  }
+
+  // Verificar se não é uma data futura
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0);
+  
+  if(dataObj > hoje){
+    formulario.get(controlName).setErrors({dataFutura: true});
+    formulario.get(controlName).markAsTouched();
+    formulario.get(controlName).setValue(null);
+    return;
+  }
+
+  formulario.get(controlName).setErrors(null);
+}

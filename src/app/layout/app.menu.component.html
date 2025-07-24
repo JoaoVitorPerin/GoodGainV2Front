@@ -1,7 +1,7 @@
 <ul class="layout-menu flex flex-column gap-1">
     @for(item of model; track item){
         <li class="cursor-pointer menu-item py-2">
-            <div class="flex align-items-center p-1">
+            <div class="flex align-items-center p-1" [ngClass]="{'text-primary': isUrlAtiva(item.routerLink[0])}" [routerLinkActive]="'text-primary'" [routerLink]="item.routerLink">
                 <i class="{{item.icon}}" class="text-2xl"></i>
                 <span class="ml-2 text-xl mt-1">{{item.label}}</span>
             </div>

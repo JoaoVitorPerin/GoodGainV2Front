@@ -4319,7 +4319,6 @@
   .p-confirm-popup {
     background: #2C2C2C;
     color: rgba(255, 255, 255, 0.87);
-    border: 1px solid #424b57;
     border-radius: 3px;
     box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
   }
@@ -4367,7 +4366,6 @@
   .p-dialog {
     border-radius: 3px;
     box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
-    border: 1px solid #424b57;
   }
   .p-dialog .p-dialog-header {
     border-bottom: 0 none;
@@ -4440,7 +4438,6 @@
   .p-overlaypanel {
     background: #2C2C2C;
     color: rgba(255, 255, 255, 0.87);
-    border: 1px solid #424b57;
     border-radius: 3px;
     box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
   }
@@ -4482,7 +4479,6 @@
   .p-sidebar {
     background: #2C2C2C;
     color: rgba(255, 255, 255, 0.87);
-    border: 1px solid #424b57;
     box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
   }
   .p-sidebar .p-sidebar-header {

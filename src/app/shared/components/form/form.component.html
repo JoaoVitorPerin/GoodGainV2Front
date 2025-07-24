@@ -413,6 +413,7 @@
         [filter]="true" [showClear]="true" ngDefaultControl 
         [id]="formControlName + '_select'"
         [ngClass]="{'ng-invalid ng-dirty': !formGroup?.get(formControlName)?.valid && formGroup?.get(formControlName)?.touched }"
+        styleClass="w-full"
         [virtualScroll]="items.length > 100 ? true : false" [virtualScrollItemSize]="35" appendTo="body"
         (onFilter)="onFilterHandler($event, dropdown)"
         [optionLabel]="'label'" 
@@ -446,6 +447,7 @@
         (onChange)="onChangeHandler($event)"
         [showClear]="true"
         ngDefaultControl
+        styleClass="w-full"
         [id]="formControlName + '_treeselect'"
         [ngClass]="{'ng-invalid ng-dirty': !formGroup?.get(formControlName)?.valid && formGroup?.get(formControlName)?.touched }"
         [virtualScroll]="true"
@@ -470,7 +472,7 @@
 
   <div *ngIf="type === 'select-img'">
     <p-floatLabel>
-      <p-dropdown [formControlName]="formControlName" [options]="items" (onChange)="onChangeHandler($event)" [filter]="true" [showClear]="true" ngDefaultControl 
+      <p-dropdown [formControlName]="formControlName" [options]="items" (onChange)="onChangeHandler($event)" [filter]="true" [showClear]="true" ngDefaultControl styleClass="w-full"
         [id]="formControlName + '_selectimg'"
         [ngClass]="{'ng-invalid ng-dirty': !formGroup?.get(formControlName)?.valid && formGroup?.get(formControlName)?.touched }" [virtualScroll]="true" [virtualScrollItemSize]="35" appendTo="body">
         <ng-template let-item pTemplate="item">
@@ -489,7 +491,7 @@
   <div *ngIf="type === 'select-multiplo'">
     <p-floatLabel>
       <p-multiSelect [formControlName]="formControlName" [options]="items"
-        [showClear]="true" ngDefaultControl
+        [showClear]="true" ngDefaultControl styleClass="w-full"
         [id]="formControlName + '_multiselect'"
         [virtualScroll]="true" [virtualScrollItemSize]="35" appendTo="body" (onFilter)="onFilter($event)">
           <ng-template pTemplate="empty">

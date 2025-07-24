@@ -11,3 +11,11 @@ $gutter: 1rem; //for primeflex grid system
 .p-paginator{
     justify-content: end!important;
 }
+
+.isDisabled {
+  color: currentColor;
+  opacity: 0.5;
+  text-decoration: none;
+  pointer-events: none;
+  cursor: pointer;
+}

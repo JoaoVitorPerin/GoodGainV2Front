@@ -7,6 +7,7 @@ import { Page404Component } from './core/page-404/page-404.component';
 import { RedefinirSenhaComponent } from './core/redefinir-senha/redefinir-senha.component';
 import { HomeComponent } from './core/home/home.component';
 import { CadastroComponent } from './core/cadastro/cadastro.component';
+import { PerfilComponent } from './modules/perfil/perfil.component';
 
 const APP_ROUTES: Routes = [
     {
@@ -38,6 +39,10 @@ const APP_ROUTES: Routes = [
             {
                 path: '404',
                 component: Page404Component
+            },
+            {
+                path: 'perfil',
+                component: PerfilComponent
             }
         ]
     },

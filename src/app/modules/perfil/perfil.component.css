@@ -1,0 +1,11 @@
+.redefinirSenha{
+    cursor: pointer;
+}
+.redefinirSenha::after{
+    color: #039700;
+}
+
+::ng-deep .p-overlaypanel-content{
+    font-size: .75rem;
+    width: 300px;
+}
