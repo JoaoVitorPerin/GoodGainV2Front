@@ -34,8 +34,6 @@ const APP_ROUTES: Routes = [
         path: '',
         component: AppLayoutComponent,
         data: { animationState: 'AppLayoutComponent' },
-        canActivate: [AutenticacaoGuard],
-        canActivateChild: [AutenticacaoGuard],
         children: [
             {
                 path: '404',

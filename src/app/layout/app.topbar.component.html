@@ -2,8 +2,8 @@
     <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
         <i class="pi pi-bars"></i>
     </button>
-    <a routerLink="/separar-pedido">
-        <img src="../../assets/img/icons/Logo.png" height="30" alt="StockFlow">
+    <a>
+        <img src="../../assets/img/icons/GoodGainCompleto.svg" height="40" class="ml-3 mt-2" alt="GoodGain">
     </a>
     @if(!isMobile){
         <div #topbarmenu class="layout-topbar-menu flex align-item-center gap-2" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">

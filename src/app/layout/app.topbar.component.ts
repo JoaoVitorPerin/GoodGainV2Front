@@ -39,13 +39,15 @@ export class AppTopBarComponent {
         private formBuilder: FormBuilder,
         private toastrService: ToastrService,
     ) {
-        this.permissoes = this.tokenService.getPermissions();
+        this.permissoes = []
 
         this.formCotacao = this.formBuilder.group({
             cotacao: [null],
         })
 
-        this.nomeUsuario = `${this.tokenService.getJwtDecodedAccess().first_name} ${this.tokenService.getJwtDecodedAccess().last_name}`;
+        // this.nomeUsuario = `${this.tokenService.getJwtDecodedAccess().first_name ?? ''} ${this.tokenService.getJwtDecodedAccess().last_name ?? ''}`;
+        
+        this.nomeUsuario = 'Usuário Teste';
 
         if(this.permissoes.includes('Administrador'))
             this.buscarCotacao();

@@ -17,7 +17,7 @@ export class AppMenuComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        const permissoes = this.tokenService.getPermissions()
+        const permissoes = this.tokenService.getPermissions() || [];
         
         if(permissoes.includes('Administrador')) {
             this.model.push(
