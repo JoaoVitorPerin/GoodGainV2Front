@@ -44,25 +44,25 @@
 
         <ul class="list-none p-0 m-0">
             <form [formGroup]="formPerfil">
-                <li class="flex align-items-center py-3 md:px-2 flex-wrap">
+                <li class="flex align-items-center py-3 flex-wrap">
                     <div class="text-500 w-6 md:w-2 font-medium">Nome completo:</div>
                     <div class="text-900 w-full md:w-10 md:flex-order-0 flex-order-1">
                         <app-form type="text" id="nomeCompleto" formControlName="nomeCompleto" erro="Informe o seu nome completo" [ngClass]="{'isDisabled': disableCampos()}" placeholder="Digite seu usuário" ngDefaultControl/>
                     </div>
                 </li>
-                <li class="flex align-items-center py-3 md:px-2 border-top-1 surface-border flex-wrap">
+                <li class="flex align-items-center py-3 border-top-1 surface-border flex-wrap">
                     <div class="text-500 w-6 md:w-2 font-medium">E-mail:</div>
                     <div class="text-900 w-full md:w-10 md:flex-order-0 flex-order-1">
                         <app-form type="text" id="email" formControlName="email" placeholder="Digite seu email" ngDefaultControl [required]="true" [ngClass]="{'isDisabled': disableCampos()}" erro="Informe um email válido!"/>
                     </div>
                 </li>
-                <li class="flex align-items-center py-3 md:px-2 border-top-1 surface-border flex-wrap">
+                <li class="flex align-items-center py-3 border-top-1 surface-border flex-wrap">
                     <div class="text-500 w-6 md:w-2 font-medium">Data de nascimento:</div>
                     <div class="text-900 w-full md:w-10 md:flex-order-0 flex-order-1">
                         <app-form type="date-manual" id="dataNascimento" formControlName="dataNascimento" placeholder="Selecione" ngDefaultControl [required]="true" erro="Informe sua data de nascimento!" [ngClass]="{'isDisabled': disableCampos()}" (blur)="validarDataValida('dataNascimento', formPerfil)"/>
                     </div>
                 </li>
-                <li class="flex align-items-center py-3 md:px-2 border-top-1 surface-border flex-wrap">
+                <li class="flex align-items-center py-3 border-top-1 surface-border flex-wrap">
                     <div class="text-500 w-6 md:w-2 font-medium">Genêro:</div>
                     <div class="text-900 w-full md:w-10 md:flex-order-0 flex-order-1">
                         <app-form type="select" [items]="opcoesGenero" id="genero" formControlName="genero" [ngClass]="{'isDisabled': disableCampos()}" placeholder="Selecione o seu gênero" erro="Informe seu gênero!" ngDefaultControl/>
