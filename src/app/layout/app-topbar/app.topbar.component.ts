@@ -1,12 +1,12 @@
 import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { LayoutService } from "./service/app.layout.service";
-import { TokenService } from '../shared/services/token.service';
-import { CotacaoService } from '../shared/services/cotacao.service';
-import { toLocaleFixed } from '../shared/ts/util';
-import { ModalService } from '../shared/components/modal/modal.service';
+import { LayoutService } from "../service/app.layout.service";
+import { TokenService } from '../../shared/services/token.service';
+import { CotacaoService } from '../../shared/services/cotacao.service';
+import { toLocaleFixed } from '../../shared/ts/util';
+import { ModalService } from '../../shared/components/modal/modal.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ToastrService } from '../shared/components/toastr/toastr.service';
+import { ToastrService } from '../../shared/components/toastr/toastr.service';
 
 @Component({
     selector: 'app-topbar',

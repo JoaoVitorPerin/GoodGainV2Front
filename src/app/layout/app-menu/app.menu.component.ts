@@ -1,7 +1,7 @@
 import { inject, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
-import { LayoutService } from './service/app.layout.service';
-import { TokenService } from '../shared/services/token.service';
+import { LayoutService } from '../service/app.layout.service';
+import { TokenService } from '../../shared/services/token.service';
 import { Router } from '@angular/router';
 
 @Component({
