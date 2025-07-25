@@ -9,7 +9,7 @@
                 <i class="text-color text-3xl pi pi-times"></i>
             </button>
             }
-            <app-sidebar></app-sidebar>
+            <app-sidebar [menuItems]="menuItems"></app-sidebar>
         </div>
         <div class="flex flex-column gap-3 mb-8 md:mb-6">
             <p-button styleClass="w-full" [outlined]="true" label="Visualização" icon="pi pi-cog" (click)="onConfigButtonClick()"></p-button>
@@ -23,7 +23,7 @@
     </div>
     <app-config></app-config>
     @if(isMobile){
-        <app-footer></app-footer>
+        <app-footer [menuItems]="menuItems"></app-footer>
     }
     <div class="layout-mask"></div>
 </div>

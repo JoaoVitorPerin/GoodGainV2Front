@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { LayoutService } from "../service/app.layout.service";
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-footer',
@@ -7,5 +8,12 @@ import { LayoutService } from "../service/app.layout.service";
     styleUrls: ['./app.footer.component.scss']
 })
 export class AppFooterComponent {
-    constructor(public layoutService: LayoutService) { }
+    private readonly layoutService = inject(LayoutService);
+    private readonly router = inject(Router);
+
+    @Input() menuItems: any[] = [];
+
+    isUrlAtiva(url: string): boolean {
+        return this.router.url.includes(url);
+    }
 }

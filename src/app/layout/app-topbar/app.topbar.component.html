@@ -1,5 +1,9 @@
-<div class="layout-topbar">
+<div class="layout-topbar flex align-items-center justify-content-between">
     <a>
         <img src="../../assets/img/icons/GoodGainCompleto.svg" height="40" class="ml-3 mt-2" alt="GoodGain">
     </a>
+    <div class="flex gap-4 align-items-center p-1">
+        <i class="text-2xl pi pi-fw pi-cog" (click)="onConfigButtonClick()"></i>
+        <i class="text-2xl pi pi-fw pi-sign-out" (click)="logout()"></i>
+    </div>
 </div>

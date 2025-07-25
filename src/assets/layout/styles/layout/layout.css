@@ -380,7 +380,6 @@ a {
 @media (min-width: 992px) {
   .layout-wrapper.layout-overlay .layout-main-container {
     margin-left: 0;
-    padding-left: 2rem;
   }
   .layout-wrapper.layout-overlay .layout-sidebar {
     transform: translateX(-100%);
@@ -402,7 +401,6 @@ a {
   }
   .layout-wrapper.layout-static.layout-static-inactive .layout-main-container {
     margin-left: 0;
-    padding-left: 2rem;
   }
   .layout-wrapper .layout-mask {
     display: none;
@@ -414,7 +412,6 @@ a {
   }
   .layout-wrapper .layout-main-container {
     margin-left: 0;
-    padding-left: 2rem;
   }
   .layout-wrapper .layout-sidebar {
     transform: translateX(-100%);

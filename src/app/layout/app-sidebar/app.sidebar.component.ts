@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, Input } from '@angular/core';
 import { LayoutService } from "../service/app.layout.service";
 
 @Component({
@@ -6,6 +6,7 @@ import { LayoutService } from "../service/app.layout.service";
     templateUrl: './app.sidebar.component.html'
 })
 export class AppSidebarComponent {
+    @Input() menuItems: any[] = [];
     constructor(public layoutService: LayoutService, public el: ElementRef) { }
 }
 
